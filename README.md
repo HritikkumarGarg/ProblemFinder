@@ -36,7 +36,7 @@ This is a simple search engine implemented using Flask framework in Python. The 
    ```bash
    python -u prepare.py
    ```
-5. Run `app.py` to check the working of server
+5. Run `python app.py` to check the working of server
 
 ## Running the Search Engine
 
