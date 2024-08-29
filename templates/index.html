@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ProblemFinder</title>
+  <link rel="icon" href="searchbar.jpg" type="image/jpg">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" /> <!-- Font awesome for social media icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" /> <!-- Font Awesome for icons -->
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); /* new font */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap'); /* new font for headings */
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: url('https://i.pinimg.com/564x/cb/a3/ba/cba3bab4bb54681ad21b0a661a04fe53.jpg') no-repeat center center fixed;  /* adjust URL as needed */
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      font-family: 'Roboto', sans-serif; /* apply the new font */
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: #343a40;
+      color: #f8f9fa;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #343a40;
+      padding: 10px;
+      text-align: right;
+      color: #f8f9fa;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 22px;
+    }
+
+    footer i {
+  font-size: 24px; /* Increased icon size */
+}
+
+    footer a {
+      color: #f8f9fa;
+      margin-right: 10px;
+    }
+
+    h1, h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 50px;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh; 
+      padding: 20px;
+      box-sizing: border-box; 
+
+    }
+    .container h1 {
+      color: #d5ccff;
+    }
+    .form h2 {
+  color: #000000; /* Black color */
+}
+
+
+
+    .form {
+      max-width: 600px;
+      width: 100%;
+      padding: 20px;
+      background-color: #d5ccff; /* light gray form background */
+      border: 1px solid #0b0b0b;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .results {
+      width: 80%;
+      overflow-y: auto;
+    }
+
+    .card {
+      background-color: rgba(70, 69, 69, 0.736);
+      font-family: 'Arial', sans-serif;
+      font-size: 15px;
+      font-weight: bold;
+      margin-top: 2px;
+      margin-bottom: 2px;
+      text-align: center;
+    }
+    .card:hover {
+      transform: scale(1.1); /* reduced the scaling for smoother transition */
+      background-color: #302f2f; /* change the hover color */
+    }
+
+    .card-title a {
+      color: #cecece;
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .card-title a:hover {
+      color: #0080ff; /* changed the hover color to blue */
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+      <i class="fas fa-compass" style="font-size: 24px;"></i> <!-- compass icon -->
+      ProblemFinder
+    </a>    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    </div>
+  </nav>
+
+  <!-- Container -->
+  <div class="container">
+    <h1>ProblemFinder</h1> <!-- added new heading -->
+    <div class="form text-center">
+      <h2>SEARCH ENGINE</h2>
+      <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+          <label>{{ form.search.label }}</label>
+          {{ form.search(class="form-control text-center")}}
+        </div>
+        <div class="form-group">
+          <label>{{ form.num_questions.label }}</label>
+          {{ form.num_questions(class="form-control text-center")}}
+        </div>
+        <div class="text-center">
+          {{ form.submit(class="btn btn-outline-dark") }}
+        </div>
+      </form>
+    </div>
+    <div class="results">
+      <div class="card-rows">
+        {% for result in results %}
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title">
+              <a href="{{ result['Question Link'] }}">{{ result['Document'] }}<span>&#8599;</span></a>
+            </p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2023 ProblemFinder | 
+      <a href="https://www.instagram.com/hritik_21" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://github.com/hritikkumargarg" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/hritik-garg-16105a215/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </p>
+  </footer>
+</body>
+</html>
